@@ -2,32 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>SSISM – Scam Slayer Intelligence & Solidarity Mission</title>
+  <title>SSISM • Scam Slayer Intelligence & Solidarity Mission</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
-    body {margin:0; font-family:Arial; background:#000; color:#fff; text-align:center; padding:20px;}
-    h1 {font-size:3.5em; color:#c00;}
-    .btn {background:#c00; color:#fff; padding:15px 30px; margin:20px; display:inline-block; text-decoration:none; border-radius:8px; font-size:1.3em;}
-    .btn:hover {background:#f00;}
-    footer {margin-top:100px; font-size:0.9em; color:#666;}
+    body {margin:0; background:#000; color:#0f0; font-family:'Roboto Mono',monospace; overflow-x:hidden;}
+    .glitch {font-family:'Orbitron',sans-serif; font-size:4em; color:#f00; text-align:center; padding:40px; text-shadow:0 0 10px #f00;}
+    .container {max-width:1100px; margin:auto; padding:20px;}
+    .card {background:#111; border:1px solid #0f0; margin:20px 0; padding:20px; border-radius:8px; box-shadow:0 0 15px #0f0;}
+    .btn {background:#f00; color:#fff; padding:15px 40px; font-size:1.4em; border-radius:8px; text-decoration:none; display:inline-block; margin:10px;}
+    .btn:hover {background:#ff3333; box-shadow:0 0 20px #f00;}
+    .feed {color:#0f0; line-height:1.8;}
+    .blink {animation:blink 1s infinite;}
+    @keyframes blink {50% {opacity:0.3;}}
+    footer {text-align:center; padding:50px; color:#666; font-size:0.9em;}
   </style>
 </head>
 <body>
-  <h1>SSISM</h1>
-  <h2>Scam Slayer Intelligence & Solidarity Mission</h2>
-  <p>Exposing the $64 billion pig-butchering & human-trafficking empire in real time</p>
-  <p><b>Latest: Min Let Pan Mega-Raid (21–28 Nov 2025)</b><br>
-     Fake USD props • Chinese quota boards • Panic “destroy everything” orders • 10,000+ seized phones</p>
-  
-  <a href="https://drive.google.com/drive/folders/YOUR_FOLDER_LINK" class="btn">OPEN EVIDENCE VAULT</a>
-  <a href="https://t.me/ssism" class="btn">TELEGRAM BACKUP</a>
-  
-  <p>Contact (encrypted): ssism.intel@proton.me</p>
-  <p>This site lives on GitHub + IPFS. It cannot be disabled.</p>
-  
+  <div class="glitch">SSISM</div>
+  <div class="container">
+    <h1 style="text-align:center; color:#0f0;">Scam Slayer Intelligence & Solidarity Mission</h1>
+    <p style="text-align:center; font-size:1.3em;">Exposing the $64 billion pig-butchering & human-trafficking empire in real time</p>
+
+    <div class="card">
+      <h2>🔴 LATEST RAID • Min Let Pan Mega-Operation (21–28 Nov 2025)</h2>
+      <p>Fake USD props • Chinese quota boards • Panic “destroy everything” orders • 10,000+ seized phones</p>
+      <a href="YOUR_EVIDENCE_LINK_HERE" class="btn">OPEN EVIDENCE VAULT</a>
+      <a href="https://t.me/ssism" class="btn">TELEGRAM BACKUP</a>
+    </div>
+
+    <div class="card">
+      <h2>📡 LIVE OSINT FEED (auto-updated every hour)</h2>
+      <div id="feed" class="feed">Loading latest intelligence… <span class="blink">█</span></div>
+    </div>
+
+    <div class="card">
+      <h2>🤖 AI-GENERATED BRIEFING (updated 28 Nov 2025 15:00 UTC)</h2>
+      <p style="color:#ff0;">
+        Multiple compounds in Myawaddy–Shwe Kokko corridor raided simultaneously. Evidence confirms direct Chinese national involvement and quota-based trafficking system. Forensic extraction of 10k+ devices underway. UNODC/Interpol deployment urgently required. #KNUForensicsNow
+      </p>
+    </div>
+
+    <div style="text-align:center;">
+      <p>Contact (encrypted): <b>ssism.intel@proton.me</b></p>
+      <p>This site is 100% static • hosted on GitHub + IPFS • impossible to censor</p>
+    </div>
+  </div>
+
   <footer>
     #KNUForensicsNow #MinLetPan #PigButchering<br>
-    Mirror this site • Fork this repo • Keep the truth alive
+    Mirror this repo • Fork • Seed • Keep the truth alive forever
   </footer>
+
+  <script>
+    const sources = [
+      "https://api.allorigins.win/raw?url=https://www.bbc.com/burmese/rss.xml",
+      "https://api.allorigins.win/raw?url=https://www.irrawaddy.com/feed/",
+      "https://api.allorigins.win/raw?url=https://www.myanmar-now.org/en/rss"
+    ];
+    async function loadFeed() {
+      let html = "";
+      for (let url of sources) {
+        try {
+          let r = await fetch(url);
+          let text = await r.text();
+          let parser = new DOMParser();
+          let doc = parser.parseFromString(text, "text/xml");
+          let items = doc.querySelectorAll("item");
+          items.forEach(item => {
+            let title = item.querySelector("title").textContent;
+            let link = item.querySelector("link").textContent;
+            html += `<b>› \( {title}</b><br><a href=" \){link}" style="color:#0f0;">${link}</a><br><br>`;
+          });
+        } catch(e) {}
+      }
+      document.getElementById("feed").innerHTML = html || "No new items (feeds blocked or empty)";
+    }
+    loadFeed();
+    setInterval(loadFeed, 3600000); // refresh every hour
+  </script>
 </body>
 </html>
