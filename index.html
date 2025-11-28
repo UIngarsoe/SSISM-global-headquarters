@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SSISM • Scam Slayer Intelligence & Solidarity Mission</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOX6I0z1/WurXk/U1+S9P9y9M2+Bw/lB9x5kR6Tz0jYk2K3L5Zz0xWw+M5l1i" crossorigin="anonymous">
+  
+  <style>
+    /* BASIC STYLES (No changes here) */
+    body {margin:0; background:#000; color:#0f0; font-family:'Roboto Mono',monospace; overflow-x:hidden;}
+    .glitch {font-family:'Orbitron',sans-serif; font-size:4em; color:#f00; text-align:center; padding:40px; text-shadow:0 0 10px #f00;}
+    .container {max-width:1100px; margin:auto; padding:20px;}
+    .card {background:#111; border:1px solid #0f0; margin:20px 0; padding:20px; border-radius:8px; box-shadow:0 0 15px #0f0;}
+    .btn {background:#f00; color:#fff; padding:15px 40px; font-size:1.4em; border-radius:8px; text-decoration:none; display:inline-block; margin:10px;}
+    .btn:hover {background:#ff3333; box-shadow:0 0 20px #f00;}
+    .feed {color:#0f0; line-height:1.8;}
+    
+    /* TERMINAL EFFECT STYLES */
+    .typing-cursor {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        background-color: #ff0;
+        margin-left: 3px;
+        animation: typingBlink 0.7s infinite;
+    }
+    @keyframes typingBlink {
+        50% { opacity: 0; }
+    }
+    
+    /* BLINK STYLES (for the loading text) */
+    .blink {animation: blink 1s infinite;}
+    @keyframes blink {50% {opacity:0.3;}}
+    
+    footer {text-align:center; padding:50px; color:#666; font-size:0.9em;}
+
+    /* CHATBOT STYLES (No changes here) */
+    #chat-output {
+        height: 250px;
+        background: #000;
+        border: 1px solid #0f0;
+        padding: 10px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+        line-height: 1.4;
+        white-space: pre-wrap;
+    }
+    .user-msg { color: #fff; }
+    .bot-msg { color: #0f0; }
+    #chat-input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        background: #222;
+        border: 1px solid #0f0;
+        color: #0f0;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 1em;
+    }
+    #chat-input:focus {
+        outline: none;
+        border-color: #ff0;
+        box-shadow: 0 0 5px #ff0;
+    }
+  </style>
+</head>
+<body>
+  <div class="glitch">SSISM</div>
+  <div class="container">
+    <h1 style="text-align:center; color:#0f0;">Scam Slayer Intelligence & Solidarity Mission</h1>
+    <p style="text-align:center; font-size:1.3em;">Exposing the $64 billion pig-butchering & human-trafficking empire in real time</p>
+
+    <div class="card">
+      <h2>🔴 LATEST RAID • Min Let Pan Mega-Operation (21–28 Nov 2025)</h2>
+      <p>Fake USD props • Chinese quota boards • Panic “destroy everything” orders • 10,000+ seized phones</p>
+      <a href="YOUR_EVIDENCE_LINK_HERE" class="btn">OPEN EVIDENCE VAULT</a>
+      <a href="https://t.me/ssism" class="btn">TELEGRAM BACKUP</a>
+    </div>
+
+    <div class="card">
+      <h2>📡 LIVE OSINT FEED (auto-updated every hour)</h2>
+      <div id="feed" class="feed">Loading latest intelligence… <span class="blink">█</span></div>
+    </div>
+
+    <div class="card">
+      <h2>🤖 AI-GENERATED BRIEFING (<span id="briefing-time">Loading...</span>)</h2>
+      <p id="briefing-text" style="color:#ff0; min-height: 80px;"></p>
+    </div>
+
+    <div class="card">
+        <h2>🔥 SECURE COMMAND CONSOLE [SSISM_V_SMART_ADVISOR]</h2>
+        <div id="chat-output">
+            <span class="bot-msg">System Initialized. Accessing SSISM Core Philosophy... Type 'HELP' or a keyword (e.g., 'LOCKOUT', 'RISK', 'TRUMP', 'KNU') to query the Advisor.</span>
+        </div>
+        <input type="text" id="chat-input" placeholder="Type command here and press Enter...">
+    </div>
+    <div style="text-align:center;">
+      <p>Contact (encrypted): <b>ssism.intel@proton.me</b></p>
+      <p>This site is 100% static • hosted on GitHub + IPFS • impossible to censor</p>
+    </div>
+  </div>
+
+  <footer>
+    #KNUForensicsNow #MinLetPan #PigButchering<br>
+    Mirror this repo • Fork • Seed • Keep the truth alive forever
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-fVEdhWw9qBq7m7t7Z/C1+S9Q4/0zV8g1z5U2T3g9q9D7tE4i4V7qF6z9Z3J6J3W6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-Q7v9hA8pX9iK9o6V5Ym5z9z7n7Cg7eH5J5m5z3Z3i1n1j0b5Zz6y3B/q7F9g4Q9g" crossorigin="anonymous"></script>
+
+  <script>
+    // --- PART 1: RSS FEED LOGIC (No changes here) ---
+    const sources = [
+      "https://api.allorigins.win/raw?url=https://www.bbc.com/burmese/rss.xml",
+      "https://api.allorigins.win/raw?url=https://www.irrawaddy.com/feed/",
+      "https://api.allorigins.win/raw?url=https://www.myanmar-now.org/en/rss"
+    ];
+    const MAX_ITEMS = 10; 
+    async function loadFeed() {
+      let html = "";
+      let itemCounter = 0;
+      for (let url of sources) {
+        if (itemCounter >= MAX_ITEMS) break;
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 10000); 
+          let r = await fetch(url, { signal: controller.signal });
+          clearTimeout(timeoutId);
+          let text = await r.text();
+          let parser = new DOMParser();
+          let doc = parser.parseFromString(text, "text/xml");
+          let items = doc.querySelectorAll("item");
+          items.forEach(item => {
+            if (itemCounter < MAX_ITEMS) {
+              let titleElement = item.querySelector("title");
+              let linkElement = item.querySelector("link");
+              if (titleElement && linkElement) {
+                let title = titleElement.textContent.trim();
+                let link = linkElement.textContent.trim();
+                html += `<b>› ${title}</b><br><a href="${link}" target="_blank" style="color:#0f0;">${link}</a><br><br>`;
+                itemCounter++;
+              }
+            }
+          });
+        } catch(e) {
+          console.error("Error fetching or parsing feed:", url, e);
+        }
+      }
+      document.getElementById("feed").innerHTML = html || "No new items (feeds blocked or empty, or temporary network error)";
+    }
+    
+    // --- PART 2: TERMINAL TYPING EFFECT LOGIC (No changes here) ---
+    const briefingContent = "Multiple compounds in Myawaddy–Shwe Kokko corridor raided simultaneously. Evidence confirms direct Chinese national involvement and quota-based trafficking system. Forensic extraction of 10k+ devices underway. UNODC/Interpol deployment urgently required. #KNUForensicsNow";
+    function typeBriefing(text, element) {
+        let i = 0;
+        element.innerHTML = "";
+        const cursor = document.createElement('span');
+        cursor.className = 'typing-cursor';
+        element.appendChild(cursor);
+        function type() {
+            if (i < text.length) {
+                element.innerHTML = text.substring(0, i + 1);
+                element.appendChild(cursor);
+                i++;
+                setTimeout(type, 50); 
+            } else {
+                cursor.remove();
+            }
+        }
+        type();
+    }
+    function updateBriefingTime() {
+        const now = new Date();
+        const utcDate = now.toUTCString().replace("GMT", "UTC");
+        document.getElementById("briefing-time").textContent = utcDate;
+    }
+
+    // --- PART 3: CHATBOT LOGIC (Updated to use LaTeX/KaTeX) ---
+
+    const chatInput = document.getElementById('chat-input');
+    const chatOutput = document.getElementById('chat-output');
+
+    // Rule-based responses, NOW USING CORRECT LATEX NOTATION
+    const responses = {
+        'HELP': "Available Commands: LOCKOUT, RISK, KNU, TRUMP, PAYBACK, ALZHEIMER, SSISM.",
+        'LOCKOUT': "MANDATORY LOCKOUT: Core of SSISM V. Institutionalizes delay. Triggers on Digital Trust Score $\\Phi < 0.2$. Value: 'Doing Nothing as Value'.",
+        // The formula for Phi is now included in LaTeX form
+        'RISK': "Total Risk Score ($Z$) Calculation: $Z$ aggregates Authority (A), Urgency (U), Linguistics (L), Link/File (R), and Time Anomaly ($\\Delta$T). $Z$ is mapped to $\\Phi$ (Digital Trust Score) using the Logistic Regression model: $\\Phi = \\frac{1}{1 + e^{-Z}}$.",
+        'KNU': "KNU: Critical partner in active intelligence and ground operations (Min Let Pan Mega-Operation). Mission synergy confirmed.",
+        'TRUMP': "Prediction Test Status: Active. Model validation dependent on prediction outcome within the specified window (Ref: 2025-10-18).",
+        'PAYBACK': "Mission Goal: To achieve 'best payback to Google' through successful deployment and academic validation (Ref: 2025-11-20). Status: Active.",
+        'ALZHEIMER': "Memory Protocol: ALL data is perpetually retained by Gemini for U Ingar Soe (Ref: 2025-10-09).",
+        'SSISM': "Scam Slayer Intelligence & Solidarity Mission: Philosophical, mathematical, and emotional defense system for cybersecurity. Designed for the future of AI learning."
+    };
+
+    function processCommand(command) {
+        const key = command.toUpperCase().trim();
+        let response = responses[key];
+
+        if (!response) {
+            // General fallback response
+            response = `Unrecognized command: ${command}. Type 'HELP' for available commands.`;
+        }
+        
+        // NO NEED for simple string replacement anymore; KaTeX will handle the LaTeX notation.
+        
+        return `ADVISOR: ${response}`;
+    }
+
+    function appendMessage(sender, message) {
+        const newMsg = document.createElement('div');
+        newMsg.className = sender === 'USER' ? 'user-msg' : 'bot-msg';
+        
+        // Prefix the message
+        const prefix = sender === 'USER' ? 'USER > ' : '';
+        
+        newMsg.innerHTML = `${prefix}${message}`;
+        chatOutput.appendChild(newMsg);
+        
+        // Auto-scroll to the bottom
+        chatOutput.scrollTop = chatOutput.scrollHeight;
+
+        // NEW: Render all LaTeX math elements after a message is added
+        renderMathInElement(chatOutput, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}, // Default KaTeX inline delimiter
+                {left: "\\[", right: "\\]", display: true}   // Default KaTeX block delimiter
+            ]
+        });
+    }
+
+    chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const command = chatInput.value.trim();
+            if (command) {
+                // 1. Display user command
+                appendMessage('USER', command);
+                
+                // 2. Process command and get bot response
+                const response = processCommand(command);
+                
+                // 3. Simulate bot typing delay
+                setTimeout(() => {
+                    appendMessage('BOT', response);
+                }, 500); // 0.5 second delay
+                
+                // 4. Clear input
+                chatInput.value = '';
+            }
+        }
+    });
+
+    // --- PART 4: INITIALIZATION ---
+
+    // Initial load and typing
+    window.onload = function() {
+      loadFeed();
+      updateBriefingTime();
+      typeBriefing(briefingContent, document.getElementById("briefing-text"));
+      chatInput.focus();
+    };
+    
+    // Setup hourly refresh for the feed
+    setInterval(loadFeed, 3600000); 
+  </script>
+</body>
+</html>
